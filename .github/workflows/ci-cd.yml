@@ -25,7 +25,6 @@ jobs:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: vercel deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
-        working-directory: ./sigseven-frontend
 
   # ----------------------------------------------------
   # JOB 2: แพ็กหลังบ้านเป็น Docker ขึ้น Hub และยิงไปที่ Render.com
