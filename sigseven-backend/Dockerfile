@@ -9,13 +9,10 @@ RUN apt-get update && apt-get install -y \
     python3-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# 2. อัปเดตตัวช่วยบิวด์ของ pip
-RUN pip install --no-cache-dir --upgrade pip setuptools wheel
+# 2. อัปเดต pip และล็อกเวอร์ชัน setuptools รุ่นที่เป็นมิตรกับโครงสร้าง pandas-ta
+RUN pip install --no-cache-dir --upgrade pip "setuptools<69.0.0" wheel
 
-# 🔥 [FIX] ชิงติดตั้งรากฐานข้อมูลล่วงหน้า เพื่อป้องกันสคริปต์ setup.py ของ pandas-ta บิวด์พัง
-RUN pip install --no-cache-dir numpy pandas
-
-# 3. ติดตั้งไลบรารีที่เหลือตามรายการปกติ
+# 3. ติดตั้งไลบรารีตามรายการ requirements.txt
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 

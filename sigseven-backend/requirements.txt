@@ -17,8 +17,8 @@ markdown-it-py==4.2.0
 mdurl==0.1.2
 multitasking==0.0.13
 numba==0.61.2
-numpy==2.2.6
-pandas==3.0.3
+numpy==1.26.4
+pandas==2.2.3
 pandas-ta @ git+https://github.com/twopirllc/pandas-ta.git@development
 peewee==4.0.5
 platformdirs==4.9.6
@@ -32,7 +32,6 @@ python-dotenv==1.2.2
 pytz==2026.2
 requests==2.34.2
 rich==15.0.0
-setuptools==82.0.1
 six==1.17.0
 soupsieve==2.8.3
 starlette==1.0.0
