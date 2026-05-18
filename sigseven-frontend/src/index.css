@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+/* ปรับสีพื้นหลังทั้งหน้าจอเป็นสีดำสไตล์แพลตฟอร์มเทรด */
+body {
+  @apply bg-gray-900 text-white;
+}
