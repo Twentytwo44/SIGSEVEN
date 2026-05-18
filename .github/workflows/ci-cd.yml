@@ -20,8 +20,8 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: '--prod' # สั่งลุยขึ้นโปรดักชันตัวจริง
-          working-directory: ./frontend
+          vercel-args: '--prod' 
+          working-directory: ./sigseven-frontend # 🔥 แก้เป็นชื่อโฟลเดอร์จริง
 
   # ----------------------------------------------------
   # JOB 2: แพ็กหลังบ้านเป็น Docker ขึ้น Hub และยิงไปที่ Render.com
@@ -43,8 +43,8 @@ jobs:
       - name: Build and Push Backend Docker Image
         uses: docker/build-push-action@v5
         with:
-          context: ./backend
-          file: ./backend/Dockerfile
+          context: ./sigseven-backend # 🔥 แก้เป็นชื่อโฟลเดอร์จริง
+          file: ./sigseven-backend/Dockerfile # 🔥 แก้เป็นชื่อโฟลเดอร์จริง
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/options-backend:latest
 
