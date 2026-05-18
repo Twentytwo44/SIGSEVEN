@@ -19,7 +19,7 @@ multitasking==0.0.13
 numba==0.61.2
 numpy==2.2.6
 pandas==3.0.3
-pandas-ta @ git+https://github.com/twopirllc/pandas-ta.git
+pandas-ta @ git+https://github.com/twopirllc/pandas-ta.git@development
 peewee==4.0.5
 platformdirs==4.9.6
 protobuf==7.34.1
