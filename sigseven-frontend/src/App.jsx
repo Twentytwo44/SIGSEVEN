@@ -22,7 +22,7 @@ export default function App() {
 
   const handleReset = async () => {
     if (isLive) {
-      await fetch('http://localhost:8000/live/stop', { method: 'POST' });
+      await fetch('https://sigseven-backend.onrender.com/live/stop', { method: 'POST' });
       setIsLive(false);
     }
     setCandles([]);
@@ -39,7 +39,7 @@ export default function App() {
 
     try {
       // 🔥 แนบคู่เงินไปกับ Query String
-      const response = await fetch(`http://localhost:8000/backtest/run?symbol=${selectedSymbol}`, { method: 'POST' });
+      const response = await fetch(`https://sigseven-backend.onrender.com/backtest/run?symbol=${selectedSymbol}`, { method: 'POST' });
       const data = await response.json();
       if (data.status === 'success') setStatusMessage('Backtest processed successfully!');
       else { alert(`Error: ${data.message}`); setIsTesting(false); }
@@ -53,7 +53,7 @@ export default function App() {
     // ส่งสัญลักษณ์คู่เงินไปด้วยตอนกดเริ่มสตรีมราคา
     const endpoint = isLive ? 'stop' : `start?symbol=${selectedSymbol}`;
     try {
-      const response = await fetch(`http://localhost:8000/live/${endpoint}`, { method: 'POST' });
+      const response = await fetch(`https://sigseven-backend.onrender.com/live/${endpoint}`, { method: 'POST' });
       const data = await response.json();
       if (data.status === 'success') {
         setIsLive(!isLive);
@@ -68,7 +68,7 @@ export default function App() {
   };
 
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:8000/ws/signals');
+    const ws = new WebSocket('wss://sigseven-backend.onrender.com/ws/signals');
     let candleBuffer = []; 
     let flushTimeout = null;
 
