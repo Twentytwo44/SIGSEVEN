@@ -144,7 +144,7 @@ async def run_visual_backtest(symbol: str = Query("EURUSD")):
     hist_len = len(hist)
     expiry_candles = 5
     
-    analyzer = SMA4Analyzer()
+    analyzer = EnhancedSMAAnalyzer()
     df = pd.DataFrame(columns=['Open', 'High', 'Low', 'Close'])
     
     for i in range(hist_len):
