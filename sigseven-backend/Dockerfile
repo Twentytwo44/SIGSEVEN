@@ -2,17 +2,13 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# 1. ติดตั้งเครื่องมือคอมไพเลอร์พื้นฐาน
-RUN apt-get update && apt-get install -y \
-    git \
-    build-essential \
-    python3-dev \
-    && rm -rf /var/lib/apt/lists/*
+# ติดตั้ง git เพื่อให้ pip ดึง tvdatafeed มาได้
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
-# 2. อัปเดต pip และล็อกเวอร์ชัน setuptools รุ่นที่เป็นมิตรกับโครงสร้าง pandas-ta
-RUN pip install --no-cache-dir --upgrade pip "setuptools<69.0.0" wheel
+# อัปเดตเครื่องมือพื้นฐาน
+RUN pip install --no-cache-dir --upgrade pip wheel setuptools
 
-# 3. ติดตั้งไลบรารีตามรายการ requirements.txt
+# ติดตั้งไลบรารีแบบ Clean รวดเดียวจบ
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
