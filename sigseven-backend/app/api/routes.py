@@ -1,7 +1,7 @@
 # app/api/routes.py
 from fastapi import APIRouter, Request, WebSocket, WebSocketDisconnect, Query
 from app.api.ws_manager import manager
-from app.core.engine import SMA4Analyzer
+from app.core.engine import EnhancedSMAAnalyzer
 from tvDatafeed import TvDatafeed, Interval
 import pandas as pd
 import asyncio
@@ -23,7 +23,7 @@ async def stream_live_market_data(pair_symbol: str):
         print(f"❌ [LIVE] ไม่สามารถเริ่มไลบรารี TradingView ได้: {e}")
         return
 
-    analyzer = SMA4Analyzer()
+    analyzer = EnhancedSMAAnalyzer()
     now = datetime.now()
     elapsed_minutes = now.hour * 60 + now.minute
     init_bars = min(max(elapsed_minutes, 60), 1440) 
